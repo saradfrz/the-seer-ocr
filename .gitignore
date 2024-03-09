@@ -1,3 +1,4 @@
 input/*.jpg
 output/*.txt
+decks/*.tsv
 .venv
