@@ -1,0 +1,3 @@
+input/*.jpg
+output/*.txt
+.venv
