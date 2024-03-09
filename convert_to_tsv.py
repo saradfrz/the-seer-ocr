@@ -24,7 +24,7 @@ def convert_txt_to_tsv(filename):
 
     who_moves = generate_list_pattern(len(moves))
 
-    front = [f"{variation}&nsbp{opening}:&nsbp&nsbp{who_moves[x]}" for x in range(len(who_moves))]
+    front = [f"{variation}&nbsp{opening}:&nbsp&nbsp{who_moves[x]}" for x in range(len(who_moves))]
 
     deck = pd.DataFrame()
     deck["front"] = front
