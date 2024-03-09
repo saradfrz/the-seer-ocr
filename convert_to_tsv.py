@@ -1,8 +1,10 @@
 import pandas as pd
+import numpy as np
+import os
 
 def generate_list_pattern(length):
     pattern = []
-    limit = round(length/2)
+    limit = int(np.floor(length/2))
     for i in range(1, limit + 1):
         pattern.append(f'{i}. White')
         pattern.append(f'{i}. Black')
@@ -12,7 +14,7 @@ def generate_list_pattern(length):
 
 def convert_txt_to_tsv(filename):
 
-    with open(f"output/{filename}.txt", "r", encoding="utf-8") as f:
+    with open(f"output/{filename}", "r", encoding="utf-8") as f:
         text = f.read()
 
     content = text.split("\n")
@@ -32,3 +34,17 @@ def convert_txt_to_tsv(filename):
     deck.to_csv(f"decks/{filename}.tsv", sep='\t', header=False, index=False)
 
 
+def get_filenames():
+    filenames = []
+
+    for filename in os.listdir("output"):
+        if os.path.isfile(os.path.join("output", filename)):
+            filenames.append(filename)
+    return filenames
+
+
+if __name__ == "__main__":
+    filenames = get_filenames()
+    for filename in filenames:
+        if filename != ".gitkeep":
+            convert_txt_to_tsv(filename)
